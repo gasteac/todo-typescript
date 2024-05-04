@@ -2,7 +2,7 @@
 // TodoId contiene un objeto con una propiedad id de tipo number
 // TodoType contiene una interfaz con las propiedades id, title y completed
 import { type TodoId, type Todo as TodoType } from "../types"
-
+import 'animate.css';
 // Creamos una interfaz Props que extiende de TodoType
 // Le agrego dos funciones, onRemoveTodo y onCompleteTodo
 interface Props extends TodoType {
@@ -11,9 +11,11 @@ interface Props extends TodoType {
 }
 
 export const Todo: React.FC<Props> = ({ id, title, completed, onRemoveTodo, onCompleteTodo }) => {
+
     return (
         <div className="flex gap-2 items-center justify-between ">
-            <div className="flex gap-2 justify-center items-center max-w-[30rem]">
+            <div className="flex gap-2 justify-center items-center max-w-[30rem] animate__animated animate__fadeInLeft animate__faster">
+            {/* <div  className="flex gap-2 justify-center items-center max-w-[30rem] "> */}
                   <input type="checkbox" className="checkbox" checked={completed} onChange={() => onCompleteTodo({ id })} />
                 <label htmlFor="" className="line-clamp-3">{title}</label>
             </div>
