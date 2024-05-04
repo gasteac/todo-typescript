@@ -9,13 +9,13 @@ import { Todo } from "./Todo"
 // Agregamos el tipo React.FC para indicar que es un componente funcional, y le pasamos el tipo Props
 export const Todos: React.FC<Props> = ({ todos, onRemoveTodo, onCompleteTodo }) => {
     return (
-        <ul className="flex flex-col gap-2  w-full">
-            {todos.map(todo => (
+        <ul className="flex flex-col gap-2 w-full text-[1rem]">
+            {todos.length === 0 ? (<h1>No hay todos :D</h1>) : (todos.map(todo => (
                 <li className={`${todo.completed ? 'completed' : ''}`} key={todo.id} >
                     {/* Al componente Todo le pasamos todos las propiedades del todo actual, la función para eliminar un todo y la función para completar un todo */}
                     <Todo {...todo} onRemoveTodo={onRemoveTodo} onCompleteTodo={onCompleteTodo} />
                 </li>
-            ))}
+            )))}
         </ul>
     )
 } 

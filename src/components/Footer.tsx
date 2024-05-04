@@ -13,16 +13,14 @@ interface Props {
 
 export const Footer: React.FC<Props> = ({
   completedCount = 0,
-  activeCount = 0,
+
   filterSelected,
   handleFilterChange,
   onClearCompleted,
 }) => {
   return (
-    <footer className="flex flex-row text-nowrap gap-4">
-      <span>
-        <strong>{activeCount}</strong> {activeCount < 2 ? 'Tarea Pendiente' : 'Tareas Pendientes'}
-      </span>
+    <footer className="flex flex-col justify-center items-center text-nowrap gap-4">
+     
       <Filters
         filterSelected={filterSelected}
         onFilterChange={handleFilterChange}

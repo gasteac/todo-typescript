@@ -4,6 +4,7 @@ import { FilterValue, Todo, TodoTitle, type TodoId } from "./types"
 import { TODO_FILTERS } from "./consts"
 import { Footer } from "./components/Footer"
 import { Header } from "./components/Header"
+import { PageFooter } from "./components/PageFooter"
 
 export const App = () => {
   // Obtengo los todos de localStorage, vienen en formato json
@@ -56,12 +57,12 @@ export const App = () => {
     }
   })
 
-  const handleRemoveAllCompleted =():void =>{
+  const handleRemoveAllCompleted = (): void => {
     const newTodos = todos.filter(todo => todo.completed !== true)
     setTodos(newTodos)
     localStorage.setItem('todos', JSON.stringify(newTodos))
   }
-  const handleAddTodo = ({title}:TodoTitle):void =>{
+  const handleAddTodo = ({ title }: TodoTitle): void => {
     const newTodo = {
       id: crypto.randomUUID(),
       title,
@@ -72,24 +73,30 @@ export const App = () => {
     localStorage.setItem('todos', JSON.stringify(newTodos))
   }
   return (
-    <div className="w-screen h-screen flex flex-col mx-auto p-8 gap-4 max-w-[30rem]">
-      <Header onAddTodo={handleAddTodo}/>
-      {/* Al componente Todos le pasamos los todos, la función para eliminar un todo y la función para completar un todo */}
-      <Todos
-        todos={filteredTodos}
-        onRemoveTodo={handleRemove}
-        onCompleteTodo={handleCompleted}
-      />
-      {/* Al componente Footer le pasamos la función para cambiar el filtro,
+    <>
+      <div className="w-screen h-screen flex flex-col mx-auto p-8 gap-4 max-w-[30rem]">
+        <Header onAddTodo={handleAddTodo} activeCount={activeCount} />
+        {/* Al componente Todos le pasamos los todos, la función para eliminar un todo y la función para completar un todo */}
+        <Todos
+          todos={filteredTodos}
+          onRemoveTodo={handleRemove}
+          onCompleteTodo={handleCompleted}
+        />
+        {/* Al componente Footer le pasamos la función para cambiar el filtro,
       el contador de todos activos, el contador de todos completados, el filtro 
       seleccionado y la función para manejar el cambio de filtro */}
-      <Footer
-        handleFilterChange={handleFilterChange}
-        activeCount={activeCount}
-        completedCount={completedCount}
-        filterSelected={filterSelected}
-        onClearCompleted={handleRemoveAllCompleted}
-      />
-    </div>
+        <Footer
+          handleFilterChange={handleFilterChange}
+          activeCount={activeCount}
+          completedCount={completedCount}
+          filterSelected={filterSelected}
+          onClearCompleted={handleRemoveAllCompleted}
+        />
+      </div>
+      <PageFooter />
+    </>
+
+
+
   )
 }

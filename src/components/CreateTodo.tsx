@@ -13,7 +13,8 @@ export const CreateTodo: React.FC<Props> = ({ saveTodo }) => {
     }
     return (
         <form onSubmit={handleSubmit}>
-            <input
+            <div className="relative">
+                <input
                 value={inputValue}
                 className="input input-bordered w-full "
                 type="text"
@@ -21,6 +22,12 @@ export const CreateTodo: React.FC<Props> = ({ saveTodo }) => {
                 placeholder="Agrega una nueva tarea :)"
                 autoFocus
             />
+                <button className="btn btn-square bg-emerald-500 text-black absolute right-0 scale-75 hover:bg-emerald-400">
+                    add
+                </button>
+            </div>
+            
+            
         </form>
     )
 }

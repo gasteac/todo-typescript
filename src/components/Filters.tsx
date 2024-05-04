@@ -15,7 +15,7 @@ type Props = {
 
 export const Filters: React.FC<Props> = ({ filterSelected, onFilterChange }) => {
     return (
-        <ul className="flex gap-2">
+        <ul className="flex gap-4 mt-5">
             {/* Como FILTERS_BUTTONS es un objeto, uso Object.entries para obtener un array de arrays */}
             {/* Y como devuelve un arreglo de arreglos, accedo a key, que seria la clave, y a href y literal que son los valores */}
             {/* key = 'all', href = '#/', literal = 'All'*/}
@@ -23,7 +23,7 @@ export const Filters: React.FC<Props> = ({ filterSelected, onFilterChange }) => 
             {/* key = 'completed', href = '#/completed', literal = 'Completed'*/}
             {Object.entries(FILTERS_BUTTONS).map(([key, { href, literal }]) => {
                 const isSelected = filterSelected === key
-                const className = isSelected ? 'selected' : ''
+                const className = isSelected ? 'text-emerald-500' : ''
                 return (
                     <li key={key}>
                         <a
