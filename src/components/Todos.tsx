@@ -8,7 +8,7 @@ import { useAutoAnimate } from '@formkit/auto-animate/react'
 // Este componente recibe los todos, la función para eliminar un todo y la función para completar un todo
 // Agregamos el tipo React.FC para indicar que es un componente funcional, y le pasamos el tipo Props
 export const Todos: React.FC<Props> = ({ todos, onRemoveTodo, onCompleteTodo }) => {
-    const [parent, enableAnimations] = useAutoAnimate(/* optional config */)
+    const [parent] = useAutoAnimate(/* optional config */)
     return (
         <ul ref={parent} className="flex flex-col gap-2 w-full text-[1rem]">
             {todos.length === 0 ? (<h1>No hay todos :D</h1>) : (todos.map(todo => (
