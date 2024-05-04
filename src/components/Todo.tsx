@@ -15,7 +15,7 @@ export const Todo: React.FC<Props> = ({ id, title, completed, onRemoveTodo, onCo
         <div className="flex gap-2 items-center justify-between ">
             <div className="flex gap-2 justify-center items-center max-w-[30rem]">
                   <input type="checkbox" className="checkbox" checked={completed} onChange={() => onCompleteTodo({ id })} />
-                <label htmlFor="" className="max-w-[18rem] line-clamp-3">{title}</label>
+                <label htmlFor="" className="line-clamp-3">{title}</label>
             </div>
           
             {/* Cuando se toca el botón de eliminar, se llama a la función onRemoveTodo con el id del todo */}
